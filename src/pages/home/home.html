@@ -13,9 +13,15 @@
   </ion-fab>
 
   <ion-list>
-    <button ion-item *ngFor="let travel of travels" (click)="travelSelected(travel)">
-    {{ travel.name }}
-  </button>
+    <ion-item  *ngFor="let travel of travels; let i = index;" (click)="travelSelected(travel)">
+    {{ travel.value.name }}
+
+     <ion-buttons end>
+      <button ion-button icon-only (click)="presentPopover($event, travel.key, i)">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+   </ion-item>
   </ion-list>
 
 </ion-content>

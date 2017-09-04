@@ -5,7 +5,7 @@ import { MyApp } from './app.component';
 import { HttpModule } from '@angular/http'
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
+import { HomePage, PopoverView } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { NewTravel } from '../pages/new-travel/new-travel';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -20,7 +20,8 @@ import { MoviServiceProvider } from '../providers/movi-service/movi-service';
     ContactPage,
     HomePage,
     TabsPage,
-    NewTravel
+    NewTravel,
+    PopoverView
   ],
   imports: [
     BrowserModule,
@@ -35,7 +36,8 @@ import { MoviServiceProvider } from '../providers/movi-service/movi-service';
     ContactPage,
     HomePage,
     TabsPage,
-    NewTravel
+    NewTravel,
+    PopoverView
   ],
   providers: [
     StatusBar,

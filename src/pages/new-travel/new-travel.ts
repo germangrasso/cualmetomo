@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { MoviServiceProvider } from '../../providers/movi-service/movi-service';
 
@@ -13,18 +13,31 @@ export class NewTravel {
   locationFrom: string;
   locationTo: string;
 
-  constructor(public navCtrl: NavController, private storage: Storage, private moviService: MoviServiceProvider) {
-     
+  constructor(public navCtrl: NavController,
+    private storage: Storage,
+    public alertCtrl: AlertController,
+    private moviService: MoviServiceProvider) {
+
   }
 
   saveTravel() {
-      this.storage.set(new Date().getTime().toString(), {name: this.name});
-      this.navCtrl.pop();
+    if (this.name.trim() == '') {
+      let alert = this.alertCtrl.create({
+        title: 'Nuevo Recorrido',
+        subTitle: 'Ingrese nombre del recorrido',
+        buttons: ['Aceptar']
+      });
+      alert.present();
+
+      return;
+    }
+    this.storage.set(new Date().getTime().toString(), { name: this.name });
+    this.navCtrl.pop();
   }
 
   search(event) {
     this.moviService.get(this.locationFrom).then((response) => {
-      
+
       debugger
     });
   }
