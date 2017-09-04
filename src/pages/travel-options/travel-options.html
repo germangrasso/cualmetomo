@@ -10,7 +10,20 @@
 <ion-content>
   <ion-card>
     <ion-card-header>
-      <ion-icon name="bus" item-start></ion-icon> {{ travel.value.name }}
+      <ion-grid>
+        <ion-row>
+          <ion-col col-10>
+            <h1><b> {{ travel.value.name }}</b></h1>
+          </ion-col>
+          <ion-col col-2>
+            <button ion-button icon-only clear (click)="refresh()">
+                <ion-icon name="refresh"></ion-icon>
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+
     </ion-card-header>
 
     <ion-list *ngFor="let travelOption of travelOptions; let i = index;">
@@ -19,13 +32,24 @@
         <ion-grid>
           <ion-row>
             <ion-col col-9>
-              <h2>   <ion-icon name="md-arrow-dropright"></ion-icon> {{travelOption.linea}}</h2>
+              <h2>
+                <ion-icon name="bus"></ion-icon> {{travelOption.linea}}</h2>
             </ion-col>
             <ion-col col-1>
               <ion-icon name="md-time"></ion-icon>
             </ion-col>
-            <ion-col col-2>
-              <p>{{ i + 1 }} min</p>
+            <ion-col col-2 style="color:red">
+              {{ i + 1 }} min
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-12>
+              <b>Origen:</b> San Martin 200 - N° 900
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-12>
+              <b>Destino:</b> Pueyrredon 450 - N° 200
             </ion-col>
           </ion-row>
         </ion-grid>

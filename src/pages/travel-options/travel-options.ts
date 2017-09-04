@@ -21,6 +21,14 @@ export class TravelOptions {
   }
 
   ionViewDidEnter() {
+    this.getData();
+  }
+  
+  refresh(){
+    this.getData();
+  }
+
+  getData(){
     this.loading = this.loadingCtrl.create({
       content: "Buscando colectivos ..."
     });
@@ -42,7 +50,6 @@ export class TravelOptions {
     this.moviService.getTravelOptions(travelOptionsRequest).then(response => this.updateList(response));
   }
   
-
   updateList(response) {
     this.travelOptions = response.recorridos;
     this.loading.dismiss();
