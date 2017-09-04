@@ -11,17 +11,27 @@
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#4e8ef7">
 
-  <!-- cordova.js required for cordova apps -->
-  <script src="cordova.js"></script>
 
-  <!-- un-comment this code to enable service worker
+  <!-- Add to home screen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Cualme tomo?">
+  <link rel="apple-touch-icon" href="assets/icon/cmt_icon_152x152.png">
+
+  <!-- Add to home screen for Windows -->
+  <meta name="msapplication-TileImage" content="assets/icon/cmt_icon_144x144.png">
+  <meta name="msapplication-TileColor" content="#2F3BA2">
+
+  <!-- cordova.js required for cordova apps -->
+  <!-- <script src="cordova.js"></script> -->
+
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('service-worker.js')
         .then(() => console.log('service worker installed'))
         .catch(err => console.error('Error', err));
     }
-  </script>-->
+  </script>
 
   <link href="build/main.css" rel="stylesheet">
 

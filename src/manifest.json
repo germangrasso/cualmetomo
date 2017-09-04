@@ -1,13 +1,67 @@
 {
-  "name": "Ionic",
-  "short_name": "Ionic",
+  "name": "Cual me tomo?",
+  "short_name": "Cual me tomo?",
   "start_url": "index.html",
   "display": "standalone",
   "icons": [{
-    "src": "assets/imgs/logo.png",
+    "src": "assets/icon/cmt_icon_16x16.png",
+    "sizes": "16x16",
+    "type": "image/png"
+  },
+  {
+    "src": "assets/icon/cmt_icon_20x20.png",
+    "sizes": "20x20",
+    "type": "image/png"
+  },
+  {
+    "src": "assets/icon/cmt_icon_24x24.png",
+    "sizes": "24x24",
+    "type": "image/png"
+  },
+  {
+    "src": "assets/icon/cmt_icon_32x32.png",
+    "sizes": "32x32",
+    "type": "image/png"
+  },
+  {
+    "src": "assets/icon/cmt_icon_48x48.png",
+    "sizes": "48x48",
+    "type": "image/png"
+  },
+  {
+    "src": "assets/icon/cmt_icon_64x64.png",
+    "sizes": "64x64",
+    "type": "image/png"
+  },
+  {
+    "src": "assets/icon/cmt_icon_128x128.png",
+    "sizes": "128x128",
+    "type": "image/png"
+  },
+  {
+    "src": "assets/icon/cmt_icon_144x144.png",
+    "sizes": "144x144",
+    "type": "image/png"
+  },
+  {
+    "src": "assets/icon/cmt_icon_152x152.png",
+    "sizes": "152x152",
+    "type": "image/png"
+  },
+  {
+    "src": "assets/icon/cmt_icon_192x192.png",
+    "sizes": "192x192",
+    "type": "image/png"
+  },
+  {
+    "src": "assets/icon/cmt_icon_256x256.png",
+    "sizes": "256x256",
+    "type": "image/png"
+  },{
+    "src": "assets/icon/cmt_icon_512x512.png",
     "sizes": "512x512",
     "type": "image/png"
   }],
-  "background_color": "#4e8ef7",
-  "theme_color": "#4e8ef7"
+  "background_color": "#13818d",
+  "theme_color": "#13818d"
 }
