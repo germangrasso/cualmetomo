@@ -1,16 +1,24 @@
 <ion-header>
   <ion-navbar>
-    <button ion-button menuToggle icon-only>
-      <ion-icon name='menu'></ion-icon>
-    </button>
-    <ion-title>Mi Recorrido</ion-title>
+    <h1>Mi Recorrido</h1>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
   <ion-card>
     <ion-card-header>
-      <ion-icon name="bus" item-start></ion-icon> {{ travel.name }}
+      <ion-grid>
+        <ion-row>
+          <ion-col col-10>
+            <h1><b> {{ travel.name }}</b></h1>
+          </ion-col>
+          <ion-col col-2>
+            <button ion-button icon-only clear (click)="refresh()">
+                <ion-icon name="refresh"></ion-icon>
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </ion-card-header>
 
     <ion-list *ngFor="let travelOption of travelOptions; let i = index;">
@@ -31,12 +39,12 @@
           </ion-row>
           <ion-row>
             <ion-col col-12>
-              <b>Origen:</b> San Martin 200 - N° 900
+              <b>Origen:</b> San Martin 200 - NÂ° 900
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col col-12>
-              <b>Destino:</b> Pueyrredon 450 - N° 200
+              <b>Destino:</b> Pueyrredon 450 - NÂ° 200
             </ion-col>
           </ion-row>
         </ion-grid>
