@@ -24,7 +24,7 @@ export class NewTravel
   {
   }
 
-  saveTravel()
+  saveTravel() {
     if (this.name.trim() == '') {
       let alert = this.alertCtrl.create({
         title: 'Nuevo Recorrido',
