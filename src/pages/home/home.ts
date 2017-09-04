@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, Events,NavParams,  Popover, PopoverController } from 'ionic-angular';
 import { NewTravel } from '../new-travel/new-travel';
+import { TravelOptions } from '../travel-options/travel-options'
 import { Storage } from '@ionic/storage';
 
 @Component({
@@ -24,7 +25,7 @@ export class HomePage {
 
   }
   travelSelected(travel){
-
+      this.navCtrl.push(TravelOptions, {travel: travel});
   }
 
   addTravel(){
