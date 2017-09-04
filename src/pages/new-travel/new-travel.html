@@ -8,16 +8,13 @@
 </ion-header>
 
 <ion-content>
- <ion-list>
-
-  <ion-item>
-    <ion-label fixed>Nombre</ion-label>
-    <ion-input type="text" [(ngModel)]="name"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label fixed>Origen</ion-label>
-    <ion-input type="text" [(ngModel)]="locationFrom" (change)="search($event)"></ion-input>
-  </ion-item>
-<button ion-button large (click)="saveTravel()">Crear</button>
-</ion-list>
+  <ion-list>
+    <ion-item>
+      <ion-label fixed>Nombre</ion-label>
+      <ion-input type="text" [(ngModel)]="name"></ion-input>
+    </ion-item>
+    <ion-auto-complete [dataProvider]="locationAutoComplete" [options]="{ placeholder : 'Origen' }" #searchFrom></ion-auto-complete>
+    <ion-auto-complete [dataProvider]="locationAutoComplete" [options]="{ placeholder : 'Destino' }" #searchTo></ion-auto-complete>
+    <button ion-button large (click)="saveTravel()">Crear</button>
+  </ion-list>
 </ion-content>

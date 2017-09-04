@@ -12,6 +12,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { IonicStorageModule } from '@ionic/storage';
 import { MoviServiceProvider } from '../providers/movi-service/movi-service';
+import { AutoCompleteModule } from 'ionic2-auto-complete';
+import { LocationAutoCompleteProvider } from '../providers/location-autocomplete/location-autocomplete';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { MoviServiceProvider } from '../providers/movi-service/movi-service';
   ],
   imports: [
     BrowserModule,
+    AutoCompleteModule,    
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
     HttpModule
@@ -41,7 +44,8 @@ import { MoviServiceProvider } from '../providers/movi-service/movi-service';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    MoviServiceProvider
+    MoviServiceProvider,
+    LocationAutoCompleteProvider
   ]
 })
 export class AppModule {}
