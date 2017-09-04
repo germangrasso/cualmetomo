@@ -1,44 +1,51 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, Loading } from 'ionic-angular';
 import { MoviServiceProvider } from '../../providers/movi-service/movi-service';
+import { LoadingController } from 'ionic-angular';
 
 @Component({
   selector: 'travel-options',
   templateUrl: 'travel-options.html'
 })
 export class TravelOptions {
-  
-  travel: any;
 
+  travel: any;
+  loading: Loading;
   travelOptions: any[];
 
   private moviService: MoviServiceProvider;
 
-  constructor(public navCtrl: NavController, private navParms: NavParams, private moviSrv: MoviServiceProvider) {
-    this.travel = this.navParms.get('travel');
+  constructor(public navCtrl: NavController, private navParms: NavParams, private moviSrv: MoviServiceProvider, public loadingCtrl: LoadingController) {
+    this.travel = this.navParms.get('travel').value;
     this.moviService = moviSrv;
   }
 
   ionViewDidEnter() {
+    this.loading = this.loadingCtrl.create({
+      content: "Buscando colectivos ..."
+    });
+
+    this.loading.present();
+
     this.travelOptions = [];
 
     let travelOptionsRequest = {
       "origen": {
-        "geoJson": "{\"type\":\"Point\",\"coordinates\":[5438881.182839044,6355692.494333955]}"
+        "geoJson":{ "type": "Point", "coordinates": this.travel.locationFrom.geoJson }  
       },
       "destino": {
-        "geoJson": "{\"type\":\"Point\",\"coordinates\":[5440876.728564554,6354437.1738964]}"
+        "geoJson": { "type": "Point", "coordinates": this.travel.locationFrom.geoJson } 
       },
       "cantCuadras": 4
     }
 
-    this.moviService.getTravelOptions(travelOptionsRequest).then(response => this.updateList(response))
-
+    this.moviService.getTravelOptions(travelOptionsRequest).then(response => this.updateList(response));
   }
+  
 
   updateList(response) {
-    console.log("List updated with: ", response);
     this.travelOptions = response.recorridos;
+    this.loading.dismiss();
   }
-   
+
 }
