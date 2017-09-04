@@ -35,10 +35,11 @@ export class NewTravel
 
       return;
     }
-    this.storage.set(new Date().getTime().toString(), 
-                     {name: this.name, 
-                     locationFrom: this.searchFrom.getSelection(), 
-                     locationTo: this.searchTo.getSelection() });
+    this.storage.set(new Date().getTime().toString(), {
+                    name: this.name, 
+                    locationFrom: JSON.stringify(this.searchFrom.getSelection()), 
+                    locationTo: JSON.stringify(this.searchTo.getSelection())
+                  });
     this.navCtrl.pop();
   }
 

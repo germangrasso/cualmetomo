@@ -31,10 +31,10 @@ export class TravelOptions {
 
     let travelOptionsRequest = {
       "origen": {
-        "geoJson":{ "type": "Point", "coordinates": this.travel.locationFrom.geoJson }  
+        "geoJson":{ "type": "Point", "coordinates": JSON.parse(this.travel.locationFrom).geoJson }  
       },
       "destino": {
-        "geoJson": { "type": "Point", "coordinates": this.travel.locationFrom.geoJson } 
+        "geoJson": { "type": "Point", "coordinates": JSON.parse(this.travel.locationTo).geoJson } 
       },
       "cantCuadras": 4
     }

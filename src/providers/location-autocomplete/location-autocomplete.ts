@@ -27,7 +27,7 @@ export class LocationAutoCompleteProvider implements AutoCompleteService
       {
         return result.json().features
           .filter(item => item.properties.subtipo == "DIRECCIÓN") 
-          .map(item => { return { "name": item.properties.name, "geoJson": item.properties.id.replace('<', '[').replace('>', ']'), "subtipo": item.properties.subtipo } });
+          .map(item => { return { "name": item.properties.name, "geoJson": JSON.parse(item.properties.id.replace('<', '[').replace('>', ']')), "subtipo": item.properties.subtipo } });
       });
   }
 }
