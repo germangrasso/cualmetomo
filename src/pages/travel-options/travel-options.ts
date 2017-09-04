@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, Loading } from 'ionic-angular';
 import { MoviServiceProvider } from '../../providers/movi-service/movi-service';
 import { LoadingController } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'travel-options',
@@ -15,20 +16,24 @@ export class TravelOptions {
 
   private moviService: MoviServiceProvider;
 
-  constructor(public navCtrl: NavController, private navParms: NavParams, private moviSrv: MoviServiceProvider, public loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, private navParms: NavParams,
+    private moviSrv: MoviServiceProvider, public loadingCtrl: LoadingController,
+    private storage: Storage
+  ) {
     this.travel = this.navParms.get('travel').value;
     this.moviService = moviSrv;
+    this.storage = storage;
   }
 
   ionViewDidEnter() {
     this.getData();
   }
-  
-  refresh(){
+
+  refresh() {
     this.getData();
   }
 
-  getData(){
+  getData() {
     this.loading = this.loadingCtrl.create({
       content: "Buscando colectivos ..."
     });
@@ -37,19 +42,27 @@ export class TravelOptions {
 
     this.travelOptions = [];
 
-    let travelOptionsRequest = {
-      "origen": {
-        "geoJson": JSON.stringify( { "type": "Point", "coordinates": JSON.parse(this.travel.locationFrom).geoJson } )  
-      },
-      "destino": {
-        "geoJson": JSON.stringify( { "type": "Point", "coordinates": JSON.parse(this.travel.locationTo).geoJson } )
-      },
-      "cantCuadras": 4
-    }
+    this.storage.get('settings').then(settings => {
+      let cuadras = 4;
+      if (settings && settings.proximity) {
+        cuadras = settings.proximity;
+      }
+      let travelOptionsRequest = {
+        "origen": {
+          "geoJson": JSON.stringify({ "type": "Point", "coordinates": JSON.parse(this.travel.locationFrom).geoJson })
+        },
+        "destino": {
+          "geoJson": JSON.stringify({ "type": "Point", "coordinates": JSON.parse(this.travel.locationTo).geoJson })
+        },
+        "cantCuadras": cuadras
+      }
 
-    this.moviService.getTravelOptions(travelOptionsRequest).then(response => this.updateList(response));
+      this.moviService.getTravelOptions(travelOptionsRequest).then(response => this.updateList(response));
+    }
+    )
+
   }
-  
+
   updateList(response) {
     this.travelOptions = response.recorridos;
     this.loading.dismiss();

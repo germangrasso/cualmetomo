@@ -17,7 +17,7 @@ export class Settings {
     public navCtrl: NavController,
     private storage: Storage) {
     this.storage.get('settings').then((val) => {
-      this.proximity = val.proximity;
+      this.proximity = val ? val.proximity : 4;
     });
   }
 
