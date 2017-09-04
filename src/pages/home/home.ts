@@ -12,6 +12,8 @@ import { Storage } from '@ionic/storage';
 })
 export class HomePage {
 
+    travels: any[];
+
   constructor(public navCtrl: NavController, private storage: Storage, private popoverCtrl: PopoverController ) {
 
   }
@@ -25,10 +27,12 @@ export class HomePage {
 
   }
   travelSelected(travel){
+    console.log("Travel selected!");
+    this.navCtrl.push(TravelOptions, {travel: travel});
+  }
+
   goToMyTravels(){
        this.navCtrl.push(MyTravels);
-      console.log("Travel selected!");
-      this.navCtrl.push(TravelOptions, {travel: travel});
   }
 
   addTravel(){
