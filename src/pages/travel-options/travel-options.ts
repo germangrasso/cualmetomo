@@ -1,25 +1,32 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, Loading } from 'ionic-angular';
 import { MoviServiceProvider } from '../../providers/movi-service/movi-service';
+import { LoadingController } from 'ionic-angular';
 
 @Component({
   selector: 'travel-options',
   templateUrl: 'travel-options.html'
 })
 export class TravelOptions {
-  
-  travel: any;
 
+  travel: any;
+  loading: Loading;
   travelOptions: any[];
 
   private moviService: MoviServiceProvider;
 
-  constructor(public navCtrl: NavController, private navParms: NavParams, private moviSrv: MoviServiceProvider) {
+  constructor(public navCtrl: NavController, private navParms: NavParams, private moviSrv: MoviServiceProvider, public loadingCtrl: LoadingController) {
     this.travel = this.navParms.get('travel');
     this.moviService = moviSrv;
   }
 
   ionViewDidEnter() {
+    this.loading = this.loadingCtrl.create({
+      content: "Buscando colectivos ..."
+    });
+
+    this.loading.present();
+
     this.travelOptions = [];
 
     let travelOptionsRequest = {
@@ -32,13 +39,13 @@ export class TravelOptions {
       "cantCuadras": 4
     }
 
-    this.moviService.getTravelOptions(travelOptionsRequest).then(response => this.updateList(response))
-
+    this.moviService.getTravelOptions(travelOptionsRequest).then(response => this.updateList(response));
   }
+  
 
   updateList(response) {
-    console.log("List updated with: ", response);
     this.travelOptions = response.recorridos;
+    this.loading.dismiss();
   }
-   
+
 }
