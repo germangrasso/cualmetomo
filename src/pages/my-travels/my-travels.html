@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Mis Recorridos</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-fab bottom right>
+    <button ion-fab mini button (click)="addTravel()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+
+  <ion-list>
+    <ion-item *ngFor="let travel of travels; let i = index;">
+      <ion-buttons start>
+        <button ion-button clear (click)="travelSelected(travel)"> {{ travel.value.name }}</button>
+      </ion-buttons>
+      <ion-buttons end>
+        <button ion-button icon-only clear (click)="presentPopover($event, travel.key, i)">
+        <ion-icon name="more"></ion-icon>
+      </button>
+      </ion-buttons>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
