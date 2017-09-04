@@ -21,7 +21,7 @@ export class LocationAutoCompleteProvider implements AutoCompleteService
 
   getResults(keyword: string)
   {
-    return this.http.get(`http://ws.rosario.gov.ar/ubicaciones/public/geojson/ubicaciones/all/all/${keyword}/true`)
+    return this.http.get(`https://ws.rosario.gov.ar/ubicaciones/public/geojson/ubicaciones/all/all/${keyword}/true`)
       .map(
       result =>
       {
