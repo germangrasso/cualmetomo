@@ -9,7 +9,7 @@ import { MoviServiceProvider } from '../../providers/movi-service/movi-service';
 })
 export class NewTravel {
 
-  name: string;
+  name: string = '';
   locationFrom: string;
   locationTo: string;
 
