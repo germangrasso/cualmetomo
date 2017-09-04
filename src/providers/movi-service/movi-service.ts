@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 /*
@@ -22,4 +22,22 @@ export class MoviServiceProvider {
       })
     })
   }
+
+  getTravelOptions(travelOptionsRequest) {
+    let headers = new Headers();
+  //  headers.append("Accept", 'application/json');
+  
+  //headers.append('Access-Control-Allow-Headers', 'Content-type' );
+    headers.append('Content-Type', 'application/json' );
+    let options = new RequestOptions({ headers: headers });
+
+    return new Promise(resolve => {
+      this.http.post(`http://infomapa.rosario.gov.ar/emapa/tup/comoLLego/buscarTup.htm`, travelOptionsRequest)
+      .subscribe(res => {
+        return resolve(res.json());
+      }, error => { console.log("Error obteniendo posibles recorridos", error) })
+    });
+
+  }
+
 }

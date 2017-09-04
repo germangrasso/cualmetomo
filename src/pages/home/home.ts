@@ -16,7 +16,34 @@ export class HomePage {
 
   }
 
+  ionViewDidEnter() {
+    this.travels = [];
+
+    this.storage.forEach((value, key) => {
+        this.travels.push({key: key, value: value});
+    });
+
+  }
+  travelSelected(travel){
   goToMyTravels(){
        this.navCtrl.push(MyTravels);
+      console.log("Travel selected!");
+      this.navCtrl.push(TravelOptions, {travel: travel});
+  }
+
+  addTravel(){
+     this.navCtrl.push(NewTravel);
+  }
+
+  presentPopover(ev, travelKey,travelIndex) {
+      let popover = this.popoverCtrl.create(PopoverView, { deleteTravel: function(){
+          this.storage.remove(travelKey);
+          this.travels.splice(travelIndex, 1);
+          popover.dismiss();
+      }.bind(this)} );
+
+      popover.present({
+          ev: ev
+      });
   }
 }
