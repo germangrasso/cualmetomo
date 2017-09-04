@@ -7,6 +7,7 @@ import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { MyTravels } from '../pages/my-travels/my-travels';
+import { Settings } from '../pages/settings/settings';
 import { PopoverView } from '../pages/popover-view/popover-view'
 import { TabsPage } from '../pages/tabs/tabs';
 import { NewTravel } from '../pages/new-travel/new-travel';
@@ -28,7 +29,8 @@ import { LocationAutoCompleteProvider } from '../providers/location-autocomplete
     NewTravel,
     PopoverView,
     TravelOptions,
-    MyTravels
+    MyTravels,
+    Settings
   ],
   imports: [
     BrowserModule,
@@ -47,7 +49,8 @@ import { LocationAutoCompleteProvider } from '../providers/location-autocomplete
     NewTravel,
     PopoverView,
     TravelOptions,
-    MyTravels
+    MyTravels,
+    Settings
   ],
   providers: [
     StatusBar,
