@@ -11,4 +11,11 @@
   <ion-fab bottom right>
     <button ion-fab mini button (click)="addTravel()"><ion-icon name="add"></ion-icon></button>
   </ion-fab>
+
+  <ion-list>
+    <button ion-item *ngFor="let travel of travels" (click)="travelSelected(travel)">
+    {{ travel.name }}
+  </button>
+  </ion-list>
+
 </ion-content>

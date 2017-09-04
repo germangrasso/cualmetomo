@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'new-travel',
@@ -7,8 +8,15 @@ import { NavController } from 'ionic-angular';
 })
 export class NewTravel {
 
-  constructor(public navCtrl: NavController) {
+  name: string;
 
+  constructor(public navCtrl: NavController, private storage: Storage) {
+     
+  }
+
+  saveTravel(){
+      this.storage.set(new Date().getTime().toString(), {name: this.name});
+      this.navCtrl.pop();
   }
 
 }
