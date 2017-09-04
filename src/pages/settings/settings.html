@@ -5,5 +5,15 @@
 </ion-header>
 
 <ion-content padding>
-  <h1>Settings</h1>
+  <ion-list>
+    <ion-item>
+      <ion-label> Cant. cuadras </ion-label>
+      <ion-select [(ngModel)]="proximity" cancelText="Cancelar" okText="OK" (ionChange)="onChangeProximity()">
+        <ion-option value="2">2</ion-option>
+        <ion-option value="4">4</ion-option>
+        <ion-option value="8">8</ion-option>
+        <ion-option value="12">12</ion-option>        
+      </ion-select>
+    </ion-item>
+  </ion-list>
 </ion-content>
