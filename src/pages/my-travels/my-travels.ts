@@ -26,7 +26,6 @@ export class MyTravels {
 
   }
   travelSelected(travel){
-      debugger;
       this.navCtrl.push(TravelOptions, {travel: travel});
   }
 

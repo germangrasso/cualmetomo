@@ -34,6 +34,7 @@ export class MoviServiceProvider {
     return new Promise(resolve => {
       this.http.post(`http://infomapa.rosario.gov.ar/emapa/tup/comoLLego/buscarTup.htm`, travelOptionsRequest)
       .subscribe(res => {
+        debugger;
         return resolve(res.json());
       }, error => { console.log("Error obteniendo posibles recorridos", error) })
     });
