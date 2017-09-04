@@ -15,7 +15,7 @@ export class TravelOptions {
   private moviService: MoviServiceProvider;
 
   constructor(public navCtrl: NavController, private navParms: NavParams, private moviSrv: MoviServiceProvider) {
-    this.travel = this.navParms.get('travel');
+    this.travel = this.navParms.get('travel').value;
     this.moviService = moviSrv;
   }
 
@@ -24,10 +24,10 @@ export class TravelOptions {
 
     let travelOptionsRequest = {
       "origen": {
-        "geoJson": "{\"type\":\"Point\",\"coordinates\":[5438881.182839044,6355692.494333955]}"
+        "geoJson":{ "type": "Point", "coordinates": this.travel.locationFrom.geoJson }  
       },
       "destino": {
-        "geoJson": "{\"type\":\"Point\",\"coordinates\":[5440876.728564554,6354437.1738964]}"
+        "geoJson": { "type": "Point", "coordinates": this.travel.locationFrom.geoJson } 
       },
       "cantCuadras": 4
     }
