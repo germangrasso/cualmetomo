@@ -14,6 +14,10 @@
     <ion-label fixed>Nombre</ion-label>
     <ion-input type="text" [(ngModel)]="name"></ion-input>
   </ion-item>
+  <ion-item>
+    <ion-label fixed>Origen</ion-label>
+    <ion-input type="text" [(ngModel)]="locationFrom" (change)="search($event)"></ion-input>
+  </ion-item>
 <button ion-button large (click)="saveTravel()">Crear</button>
 </ion-list>
 </ion-content>
