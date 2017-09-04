@@ -6,8 +6,11 @@ import { HttpModule } from '@angular/http'
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
+import { MyTravels } from '../pages/my-travels/my-travels';
+import { PopoverView } from '../pages/popover-view/popover-view'
 import { TabsPage } from '../pages/tabs/tabs';
 import { NewTravel } from '../pages/new-travel/new-travel';
+import { TravelOptions } from '../pages/travel-options/travel-options';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { IonicStorageModule } from '@ionic/storage';
@@ -22,7 +25,10 @@ import { LocationAutoCompleteProvider } from '../providers/location-autocomplete
     ContactPage,
     HomePage,
     TabsPage,
-    NewTravel
+    NewTravel,
+    PopoverView,
+    TravelOptions,
+    MyTravels
   ],
   imports: [
     BrowserModule,
@@ -38,7 +44,10 @@ import { LocationAutoCompleteProvider } from '../providers/location-autocomplete
     ContactPage,
     HomePage,
     TabsPage,
-    NewTravel
+    NewTravel,
+    PopoverView,
+    TravelOptions,
+    MyTravels
   ],
   providers: [
     StatusBar,

@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Events,NavParams,  Popover, PopoverController } from 'ionic-angular';
 import { NewTravel } from '../new-travel/new-travel';
+import { MyTravels } from '../my-travels/my-travels';
+import { PopoverView } from '../popover-view/popover-view'
+import { TravelOptions } from '../travel-options/travel-options'
 import { Storage } from '@ionic/storage';
 
 @Component({
@@ -9,26 +12,11 @@ import { Storage } from '@ionic/storage';
 })
 export class HomePage {
 
-  travels = [];
-
-  constructor(public navCtrl: NavController, private storage: Storage) {
+  constructor(public navCtrl: NavController, private storage: Storage, private popoverCtrl: PopoverController ) {
 
   }
 
-  ionViewDidEnter() {
-    this.travels = [];
-
-    this.storage.forEach(x => {
-        this.travels.push(x);
-    });
+  goToMyTravels(){
+       this.navCtrl.push(MyTravels);
   }
-
-  travelSelected(travel){
-
-  }
-
-  addTravel(){
-     this.navCtrl.push(NewTravel);
-  }
-
 }

@@ -1,21 +1,26 @@
 <ion-header>
   <ion-navbar>
-    <button ion-button menuToggle icon-only>
-      <ion-icon name='menu'></ion-icon>
-    </button>
-    <ion-title>Mis Recorridos</ion-title>
+    <ion-title>¿Cuál me tomo?</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-fab bottom right>
-    <button ion-fab mini button (click)="addTravel()"><ion-icon name="add"></ion-icon></button>
-  </ion-fab>
-
-  <ion-list>
-    <button ion-item *ngFor="let travel of travels" (click)="travelSelected(travel)">
-    {{ travel.name }}
-  </button>
-  </ion-list>
-
+  <ion-grid>
+    <ion-row>
+      <ion-col col-6>
+        <button ion-button block outline (click)="goToMyTravels()">Mi Recorridos</button>
+      </ion-col>
+      <ion-col col-6>
+        <button ion-button block outline>¿Cuánto tengo?</button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6>
+        <button ion-button block outline>Puntos de recarga</button>
+      </ion-col>
+      <ion-col col-6>
+        <button ion-button block outline>Recorridos</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
