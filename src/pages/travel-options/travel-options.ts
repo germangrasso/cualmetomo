@@ -10,7 +10,7 @@ export class TravelOptions {
   
   travel: any;
 
-  travelOptions: any;
+  travelOptions: any[];
 
   private moviService: MoviServiceProvider;
 
@@ -38,6 +38,7 @@ export class TravelOptions {
 
   updateList(response) {
     console.log("List updated with: ", response);
+    this.travelOptions = response.recorridos;
   }
    
 }
