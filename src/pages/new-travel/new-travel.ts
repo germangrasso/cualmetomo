@@ -35,10 +35,37 @@ export class NewTravel
 
       return;
     }
+    
+    var searchFromSelection = this.searchFrom.getSelection();
+
+    if (!searchFromSelection) {
+      let alert = this.alertCtrl.create({
+        title: 'Nuevo Recorrido',
+        subTitle: 'Ingrese ubicación de origen',
+        buttons: ['Aceptar']
+      });
+      alert.present();
+
+      return;
+    }
+
+    var searchToSelection = this.searchTo.getSelection();
+    
+     if (!searchToSelection) {
+      let alert = this.alertCtrl.create({
+        title: 'Nuevo Recorrido',
+        subTitle: 'Ingrese ubicación de destino',
+        buttons: ['Aceptar']
+      });
+      alert.present();
+
+      return;
+    }
+
     this.storage.set(new Date().getTime().toString(), {
                     name: this.name, 
-                    locationFrom: JSON.stringify(this.searchFrom.getSelection()), 
-                    locationTo: JSON.stringify(this.searchTo.getSelection())
+                    locationFrom: JSON.stringify(searchFromSelection), 
+                    locationTo: JSON.stringify(searchToSelection)
                   });
     this.navCtrl.pop();
   }
