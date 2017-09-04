@@ -5,7 +5,8 @@ import { MyApp } from './app.component';
 import { HttpModule } from '@angular/http'
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
-import { HomePage, PopoverView } from '../pages/home/home';
+import { HomePage } from '../pages/home/home';
+import { PopoverView } from '../pages/popover-view/popover-view'
 import { TabsPage } from '../pages/tabs/tabs';
 import { NewTravel } from '../pages/new-travel/new-travel';
 import { TravelOptions } from '../pages/travel-options/travel-options';
