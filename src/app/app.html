@@ -1,1 +1,25 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-menu [content]="content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <button ion-item (click)="openPage(homePage)">
+        Mis Recorridos
+      </button>
+      <button ion-item>
+        ¿Cuánto tengo?
+      </button>
+      <button ion-item>
+        Puntos de recarga
+      </button>
+      <button ion-item>
+        Recorridos
+      </button>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-nav d="nav" #content [root]="rootPage"></ion-nav>
