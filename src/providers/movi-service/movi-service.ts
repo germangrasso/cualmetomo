@@ -32,8 +32,9 @@ export class MoviServiceProvider {
     let options = new RequestOptions({ headers: headers });
 
     return new Promise(resolve => {
-      this.http.post(`http://infomapa.rosario.gov.ar/emapa/tup/comoLLego/buscarTup.htm`, travelOptionsRequest)
+      this.http.post(`https://infomapa.rosario.gov.ar/emapa/tup/comoLLego/buscarTup.htm`, travelOptionsRequest)
       .subscribe(res => {
+        debugger;
         return resolve(res.json());
       }, error => { console.log("Error obteniendo posibles recorridos", error) })
     });

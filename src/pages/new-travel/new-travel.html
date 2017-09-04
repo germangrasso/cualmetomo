@@ -5,6 +5,7 @@
 </ion-header>
 
 <ion-content>
+  <ion-card>
   <ion-list>
     <ion-item>
       <ion-label fixed>Nombre</ion-label>
@@ -12,6 +13,7 @@
     </ion-item>
     <ion-auto-complete [dataProvider]="locationAutoComplete" [options]="{ placeholder : 'Origen' }" #searchFrom></ion-auto-complete>
     <ion-auto-complete [dataProvider]="locationAutoComplete" [options]="{ placeholder : 'Destino' }" #searchTo></ion-auto-complete>
-    <button ion-button large (click)="saveTravel()">Crear</button>
+    <button ion-button full (click)="saveTravel()">Crear</button>
   </ion-list>
+  </ion-card>
 </ion-content>

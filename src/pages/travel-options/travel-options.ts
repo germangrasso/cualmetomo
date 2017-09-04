@@ -16,11 +16,19 @@ export class TravelOptions {
   private moviService: MoviServiceProvider;
 
   constructor(public navCtrl: NavController, private navParms: NavParams, private moviSrv: MoviServiceProvider, public loadingCtrl: LoadingController) {
-    this.travel = this.navParms.get('travel');
+    this.travel = this.navParms.get('travel').value;
     this.moviService = moviSrv;
   }
 
   ionViewDidEnter() {
+    this.getData();
+  }
+  
+  refresh(){
+    this.getData();
+  }
+
+  getData(){
     this.loading = this.loadingCtrl.create({
       content: "Buscando colectivos ..."
     });
@@ -31,10 +39,10 @@ export class TravelOptions {
 
     let travelOptionsRequest = {
       "origen": {
-        "geoJson": "{\"type\":\"Point\",\"coordinates\":[5438881.182839044,6355692.494333955]}"
+        "geoJson": JSON.stringify( { "type": "Point", "coordinates": JSON.parse(this.travel.locationFrom).geoJson } )  
       },
       "destino": {
-        "geoJson": "{\"type\":\"Point\",\"coordinates\":[5440876.728564554,6354437.1738964]}"
+        "geoJson": JSON.stringify( { "type": "Point", "coordinates": JSON.parse(this.travel.locationTo).geoJson } )
       },
       "cantCuadras": 4
     }
@@ -42,7 +50,6 @@ export class TravelOptions {
     this.moviService.getTravelOptions(travelOptionsRequest).then(response => this.updateList(response));
   }
   
-
   updateList(response) {
     this.travelOptions = response.recorridos;
     this.loading.dismiss();
